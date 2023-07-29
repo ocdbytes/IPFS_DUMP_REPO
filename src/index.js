@@ -49,8 +49,8 @@ const main = async () => {
     datastore,
   });
 
-  console.log("PEERS : \n----------");
-  console.log(ipfsClient.libp2p.getPeers());
+  console.log("PEER ID : \n----------");
+  console.log(ipfsClient.libp2p.peerId.toString(), "\n");
 
   // Text Encoder to encode the strings
   const textEncoder = new TextEncoder();

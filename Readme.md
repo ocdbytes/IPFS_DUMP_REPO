@@ -16,6 +16,7 @@ This doc contains the ipfs commands and info.
   - [Commands](#commands)
   - [What is IPFS-JS ?](#what-is-ipfs-js-)
   - [What is Helia ?](#what-is-helia-)
+  - [CID explorers](#cid-explorers)
 
 ## File Structure
 
@@ -266,3 +267,8 @@ DEBUG=* node src/unixfs_nodes.js
 The output will look something like this :
 
 ![helia screen o/p](./Assets/helia1.png)
+
+## CID explorers
+
+IPLD EXPLORER : <https://explore.ipld.io/#/explore/bafkreicwbat3xkt2xedhzk4uzfm5ketqsll2kdhlri572vdjlto3bjpzgi>
+CID EXPLORER : <https://cid.ipfs.tech/#bafkreicwbat3xkt2xedhzk4uzfm5ketqsll2kdhlri572vdjlto3bjpzgi>
