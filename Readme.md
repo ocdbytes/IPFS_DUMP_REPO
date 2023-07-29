@@ -7,26 +7,26 @@ This doc contains the ipfs commands and info.
 
 ## Contents
 
-- File Structure
-- What is CID ?
-- What is Merkle DAG ?
-- Commands
-  - ipfs id
-  - ipfs daemon
-  - ipfs add
-- What is IPFS-JS ?
-- What is Helia ?
+- [IPFS](#ipfs)
+  - [Contents](#contents)
+  - [File Structure](#file-structure)
+  - [What is CID ?](#what-is-cid-)
+  - [What is Merkle DAG (Directed Acrylic Graphs) ?](#what-is-merkle-dag-directed-acrylic-graphs-)
+    - [Example of how merkle DAGs allow us to counter the duplication of content github also uses merkle DAGs to manage the version control without duplication. Ethereum also uses this.](#example-of-how-merkle-dags-allow-us-to-counter-the-duplication-of-content-github-also-uses-merkle-dags-to-manage-the-version-control-without-duplication-ethereum-also-uses-this)
+  - [Commands](#commands)
+  - [What is IPFS-JS ?](#what-is-ipfs-js-)
+  - [What is Helia ?](#what-is-helia-)
 
 ## File Structure
 
-- Assets/
-- utils/
-  - create_node.js
-  - files.js
-- src/
-  - index.js
-  - nodes_dial.js
-  - unixfs_nodes.js
+- [Assets/](./Assets/)
+- [utils/](./utils/)
+  - [create_node.js](./utils/create_node.js)
+  - [files.js](./utils/files.js)
+- [src/](./src/)
+  - [index.js](./src/index.js)
+  - [nodes_dial.js](./src/nodes_dial.js)
+  - [unixfs_nodes.js](./src/unixfs_nodes.js)
 - package.json
 - Readme.md
 
@@ -40,7 +40,6 @@ Setup :
 
 ```sh
 yarn
-yarn ts-node index.ts
 ```
 
 ## What is CID ?
@@ -255,6 +254,12 @@ Libp2p :
 - Pub/Sub
 - DHT
 - Protocol Streams
+
+Run files :
+
+```sh
+node src/<filename>
+```
 
 Helia also gives us a very good option to get the logs of what is happening in the process using some ENV variables
 
