@@ -87,6 +87,7 @@ Here if I change the contents of a one fish image it's CID will also be changed 
 
 ```txt
 [source : proto.school]
+```
 
 In a Merkle DAG, the CID of each node depends, in turn, on the CIDs of each of its children.
 As such, the CID of a root node uniquely identifies not just that node, but the entire DAG of which it’s the root!
@@ -97,25 +98,20 @@ Have you ever made a temporary backup copy of a file directory during some editi
 then found the two directories months later and wondered whether their contents were still identical?
 Rather than laboriously comparing files, you could compute a Merkle DAG for each copy: if the CIDs of the root directory matched,
 you’d know you could safely delete one and free up some space on your hard drive!
-```
 
 ### Example of how merkle DAGs allow us to counter the duplication of content github also uses merkle DAGs to manage the version control without duplication. Ethereum also uses this.
 
-```txt
 For an example of small-scale data duplication, consider the use case of tracking changes files in a directory over time (this is often called versioning).
 One change we could make to this directory is to delete the "fish" directory, replacing it with a directory called "dogs".
 These changes result in a new DAG, representing an updated state of the directory. However, all of the nodes representing the "cats" directory and its files are common to both DAGs.
 Therefore, we can reuse them, as depicted below, where the orange nodes represent nodes that are only used in the original DAG,
 the green nodes represent those that are common to both, and the blue nodes represent the extra nodes needed for the new state.
-```
 
 ![Merkle 3](./Assets/Merkle3.svg)
 
-```txt
 This means that we can actually store both versions of the "pics" directory,
 without taking up twice as much space as it takes to store a single version!
 Git, a common version control system, uses Merkle DAGs in a very similar way to track changes to source code in software projects!
-```
 
 ## Commands
 
