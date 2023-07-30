@@ -29,7 +29,7 @@ export const puttingAndGettingDataByPath = async (ipfsClient) => {
     })
   );
 
-  // ========================================[OR]
+  // ========================================[OR]========================================
 
   cid = await ipfs.dag.put({ foo: "bar" });
   let cid2 = await ipfs.dag.put({
@@ -44,7 +44,7 @@ export const puttingAndGettingDataByPath = async (ipfsClient) => {
     })
   );
 
-  // ========================================[OR]
+  // ========================================[OR]========================================
 
   cid = await ipfs.dag.put({ test: 1 });
   cid2 = await ipfs.dag.put({ bar: cid });
@@ -54,4 +54,61 @@ export const puttingAndGettingDataByPath = async (ipfsClient) => {
   });
 
   return node.value;
+};
+
+export const linkingMultipleDataIntoDAGs = async (ipfsClient) => {
+  // Creating two authors
+  const natCid = await ipfsClient.dag.put({ author: "Nat" });
+  const samCid = await ipfsClient.dag.put({ author: "Sam" });
+
+  // creating three articles/posts with some tags
+  const treePostCid = await ipfsClient.dag.put({
+    content: "trees",
+    author: samCid,
+    tags: ["outdoor", "hobby"],
+  });
+  const computerPostCid = await ipfsClient.dag.put({
+    content: "computers",
+    author: natCid,
+    tags: ["hobby"],
+    prev: treePostCid,
+  });
+  const dogPostCid = await ipfsClient.dag.put({
+    content: "dogs",
+    author: samCid,
+    tags: ["funny", "hobby"],
+    prev: computerPostCid,
+  });
+
+  // Generating the CIDs of the tags and linking them with the post
+  const outdoorTagCid = await ipfsClient.dag.put({
+    tag: "outdoor",
+    posts: [treePostCid],
+  });
+  const hobbyTagCid = await ipfsClient.dag.put({
+    tag: "hobby",
+    posts: [treePostCid, computerPostCid, dogPostCid],
+  });
+  const funnyTagCid = await ipfsClient.dag.put({
+    tag: "funny",
+    posts: [dogPostCid],
+  });
+
+  // returning the dog post cid as it is the latest post
+  return dogPostCid;
+};
+
+export const traversePosts = async (ipfsClient, cid) => {
+  // Your code goes here
+  const result = [];
+  while (cid) {
+    result.push(cid);
+    const current = await ipfsClient.dag.get(cid);
+    const prev = current.value.prev;
+    if (prev) {
+      cid = prev;
+    } else {
+      return result;
+    }
+  }
 };
