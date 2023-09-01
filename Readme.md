@@ -216,6 +216,22 @@ ipfs curl -F file=@8-SoNnsagShzqdhbo.png "http://127.0.0.1:5001/api/v0/add"
 }
 ```
 
+4. **Run Public Node (config)**
+
+```sh
+ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin '["*"]'
+ipfs config --json API.HTTPHeaders.Access-Control-Allow-Methods '["GET", "POST", "OPTIONS", "PUT"]'
+ipfs config --json API.HTTPHeaders.Access-Control-Allow-Headers '["Authorization"]'
+ipfs config --json API.HTTPHeaders.Access-Control-Expose-Headers '["Location"]'
+ipfs config --json API.HTTPHeaders.Access-Control-Allow-Credentials '["true"]'
+
+# After running (running required once only not everytime)
+
+ipfs daemon
+# ---[or]---
+ipfs daemon & # for background process
+```
+
 ## What is IPFS-JS ?
 
 IPFS-JS is a deprecated framework that is used to interact with the IPFS node to add files getting stats
@@ -271,4 +287,5 @@ The output will look something like this :
 ## CID explorers
 
 IPLD EXPLORER : <https://explore.ipld.io/#/explore/bafkreicwbat3xkt2xedhzk4uzfm5ketqsll2kdhlri572vdjlto3bjpzgi>
+
 CID EXPLORER : <https://cid.ipfs.tech/#bafkreicwbat3xkt2xedhzk4uzfm5ketqsll2kdhlri572vdjlto3bjpzgi>
